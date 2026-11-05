@@ -1,0 +1,1098 @@
+{
+  "repository": "AirBoxV2",
+  "sources": [
+    "main",
+    "v3-ltem"
+  ],
+  "projects": [
+    {
+      "pro": "badge/airbox.kicad_pro",
+      "status": "ok",
+      "clean": false,
+      "source": "main"
+    },
+    {
+      "pro": "electronics/airbox.kicad_pro",
+      "status": "ok",
+      "clean": false,
+      "source": "main"
+    },
+    {
+      "pro": "badge/airbox.kicad_pro",
+      "status": "ok",
+      "clean": false,
+      "source": "v3-ltem"
+    },
+    {
+      "pro": "electronics/airbox.kicad_pro",
+      "status": "ok",
+      "clean": false,
+      "source": "v3-ltem"
+    },
+    {
+      "pro": "electronics/sim/feedline/feed_asis.kicad_pro",
+      "status": "ok",
+      "clean": true,
+      "source": "v3-ltem"
+    },
+    {
+      "pro": "electronics/sim/feedline/feed_cut.kicad_pro",
+      "status": "ok",
+      "clean": true,
+      "source": "v3-ltem"
+    },
+    {
+      "pro": "electronics/sim/feedline/feed_cut2.kicad_pro",
+      "status": "ok",
+      "clean": true,
+      "source": "v3-ltem"
+    },
+    {
+      "pro": "electronics/sim/feedline/feed_cutboth.kicad_pro",
+      "status": "ok",
+      "clean": true,
+      "source": "v3-ltem"
+    },
+    {
+      "pro": "electronics/sim/feedline/feed_noufl.kicad_pro",
+      "status": "ok",
+      "clean": true,
+      "source": "v3-ltem"
+    },
+    {
+      "pro": "electronics/sim/feedline/feed_pi.kicad_pro",
+      "status": "ok",
+      "clean": false,
+      "source": "v3-ltem"
+    },
+    {
+      "pro": "electronics/sim/feedline/feed_pi_neck.kicad_pro",
+      "status": "ok",
+      "clean": true,
+      "source": "v3-ltem"
+    },
+    {
+      "pro": "electronics/sim/feedline/feed_pi_void_neck.kicad_pro",
+      "status": "ok",
+      "clean": true,
+      "source": "v3-ltem"
+    },
+    {
+      "pro": "electronics/sim/feedline/feed_val.kicad_pro",
+      "status": "ok",
+      "clean": true,
+      "source": "v3-ltem"
+    },
+    {
+      "pro": "electronics/sim/feedline/feed_w135.kicad_pro",
+      "status": "ok",
+      "clean": true,
+      "source": "v3-ltem"
+    }
+  ],
+  "components": [
+    {
+      "libId": "Battery_Management:BQ25798",
+      "libName": null,
+      "footprintId": "Components:Texas_RQM0029A_VQFN-29_4x4mm_P0.4mm",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": true,
+      "footprintLocal": false,
+      "model": true,
+      "instances": [
+        {
+          "source": "v3-ltem",
+          "project": "electronics/airbox",
+          "reference": "U3"
+        }
+      ],
+      "evidence": "footprint from project library Components; non-stock 3D model ${KIPRJMOD}/Components.pretty/RQM0029A.stp"
+    },
+    {
+      "libId": "Components:BQ25185DLHR",
+      "libName": null,
+      "footprintId": "Components:WSON10_DLH_TEX",
+      "symbol": true,
+      "symbolLocal": false,
+      "footprint": true,
+      "footprintLocal": false,
+      "model": true,
+      "instances": [
+        {
+          "source": "main",
+          "project": "electronics/airbox",
+          "reference": "U2"
+        }
+      ],
+      "evidence": "symbol library Components is in sym-lib-table (project); footprint from project library Components; non-stock 3D model ${KIPRJMOD}/Components.pretty/DLH0010A.stp"
+    },
+    {
+      "libId": "Components:BQ25185DLHR",
+      "libName": null,
+      "footprintId": "Components:WSON10_DLH_TEX-M",
+      "symbol": true,
+      "symbolLocal": false,
+      "footprint": true,
+      "footprintLocal": true,
+      "model": true,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "U2"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "U2"
+        }
+      ],
+      "evidence": "symbol library Components is in sym-lib-table (project); footprint from project library Components; footprint differs from library: graphics moved to another layer (3x F.SilkS->User.1); non-stock 3D model ${KIPRJMOD}/Components.pretty/DLH0010A.stp"
+    },
+    {
+      "libId": "Components:DS2484R+T",
+      "libName": null,
+      "footprintId": "Package_TO_SOT_SMD:SOT-23-6",
+      "symbol": true,
+      "symbolLocal": true,
+      "footprint": false,
+      "footprintLocal": false,
+      "model": false,
+      "instances": [
+        {
+          "source": "v3-ltem",
+          "project": "electronics/airbox",
+          "reference": "IC1"
+        }
+      ],
+      "evidence": "symbol library Components is in sym-lib-table (project); embedded copy differs from library: pin 4 (unit 1): at (25.4, -5.08, 180.0)->(13.97, -10.16, 90.0) (library->schematic); pin 6 (unit 1): at (25.4, 0.0, 180.0)->(13.97, 5.08, 270.0) (library->schematic)"
+    },
+    {
+      "libId": "Components:ETA3000",
+      "libName": null,
+      "footprintId": "Package_DFN_QFN:DFN-8-1EP_2x2mm_P0.5mm_EP0.6x1.2mm",
+      "symbol": true,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": false,
+      "model": false,
+      "instances": [
+        {
+          "source": "v3-ltem",
+          "project": "electronics/airbox",
+          "reference": "U2"
+        }
+      ],
+      "evidence": "symbol library Components is in sym-lib-table (project)"
+    },
+    {
+      "libId": "Components:P822601",
+      "libName": null,
+      "footprintId": "Components:P822601_TUNED",
+      "symbol": true,
+      "symbolLocal": false,
+      "footprint": true,
+      "footprintLocal": false,
+      "model": true,
+      "instances": [
+        {
+          "source": "v3-ltem",
+          "project": "electronics/airbox",
+          "reference": "ANT1"
+        }
+      ],
+      "evidence": "symbol library Components is in sym-lib-table (project); footprint from project library Components; non-stock 3D model ${KIPRJMOD}/libraries/3dmodels/P822601.stp"
+    },
+    {
+      "libId": "Components:P822601_TUNE_HB",
+      "libName": null,
+      "footprintId": "Components:P822601_TUNE_HB",
+      "symbol": true,
+      "symbolLocal": false,
+      "footprint": true,
+      "footprintLocal": false,
+      "model": false,
+      "instances": [
+        {
+          "source": "v3-ltem",
+          "project": "electronics/airbox",
+          "reference": "TUNE2"
+        }
+      ],
+      "evidence": "symbol library Components is in sym-lib-table (project); footprint from project library Components"
+    },
+    {
+      "libId": "Components:P822601_TUNE_LB",
+      "libName": null,
+      "footprintId": "Components:P822601_TUNE_LB",
+      "symbol": true,
+      "symbolLocal": false,
+      "footprint": true,
+      "footprintLocal": false,
+      "model": false,
+      "instances": [
+        {
+          "source": "v3-ltem",
+          "project": "electronics/airbox",
+          "reference": "TUNE1"
+        }
+      ],
+      "evidence": "symbol library Components is in sym-lib-table (project); footprint from project library Components"
+    },
+    {
+      "libId": "Components:SIM8075-6-1-12-00-A_REVA",
+      "libName": null,
+      "footprintId": "Components:GCT_SIM8075-6-1-12-00-A_REVA",
+      "symbol": true,
+      "symbolLocal": true,
+      "footprint": true,
+      "footprintLocal": true,
+      "model": true,
+      "instances": [
+        {
+          "source": "v3-ltem",
+          "project": "electronics/airbox",
+          "reference": "J4"
+        }
+      ],
+      "evidence": "symbol library Components is in sym-lib-table (project); embedded copy differs from library: pin C2 (unit 1): at (-13.97, 2.54, 0.0)->(13.97, -2.54, 180.0) (library->schematic); pin C3 (unit 1): at (-13.97, -2.54, 0.0)->(13.97, 0.0, 180.0) (library->schematic); pin SW (unit 1): at (13.97, -2.54, 180.0)->(-13.97, 6.35, 0.0) (library->schematic); footprint from project library Components; footprint differs from library: graphics differ (? zone: +3 on board/-3 in library); non-stock 3D model ${KIPRJMOD}/Components.pretty/sim8075-6-1-12-00-a.stp"
+    },
+    {
+      "libId": "Components:TPS63020DSJ",
+      "libName": null,
+      "footprintId": "Components:Texas_R-PVSON-N14_ThermalVias",
+      "symbol": true,
+      "symbolLocal": false,
+      "footprint": true,
+      "footprintLocal": true,
+      "model": true,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "U3"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "U3"
+        }
+      ],
+      "evidence": "symbol library Components is in sym-lib-table (project); footprint from project library Components; footprint differs from library: graphics moved to another layer (7x F.SilkS->User.1); non-stock 3D model ${KIPRJMOD}/Components.pretty/DSJ0014A.stp"
+    },
+    {
+      "libId": "Components:TPS63020DSJ",
+      "libName": null,
+      "footprintId": "Components:Texas_R-PVSON-N14_ThermalVias",
+      "symbol": true,
+      "symbolLocal": false,
+      "footprint": true,
+      "footprintLocal": false,
+      "model": true,
+      "instances": [
+        {
+          "source": "main",
+          "project": "electronics/airbox",
+          "reference": "U3"
+        }
+      ],
+      "evidence": "symbol library Components is in sym-lib-table (project); footprint from project library Components; non-stock 3D model ${KIPRJMOD}/Components.pretty/DSJ0014A.stp"
+    },
+    {
+      "libId": "Components:TPS630701RNMR",
+      "libName": null,
+      "footprintId": "Components:RNM0015A",
+      "symbol": true,
+      "symbolLocal": false,
+      "footprint": true,
+      "footprintLocal": false,
+      "model": true,
+      "instances": [
+        {
+          "source": "v3-ltem",
+          "project": "electronics/airbox",
+          "reference": "U10"
+        }
+      ],
+      "evidence": "symbol library Components is in sym-lib-table (project); footprint from project library Components; non-stock 3D model ${KIPRJMOD}/libraries/3dmodels/RNM0015A.stp"
+    },
+    {
+      "libId": "Components:WeMos_S2_mini",
+      "libName": null,
+      "footprintId": "Components:ESP32-S2-Mini",
+      "symbol": true,
+      "symbolLocal": false,
+      "footprint": true,
+      "footprintLocal": true,
+      "model": true,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "U1"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "U1"
+        }
+      ],
+      "evidence": "symbol library Components is in sym-lib-table (project); footprint from project library Components; footprint differs from library: graphics moved to another layer (9x F.SilkS->User.1); graphics differ (F.CrtYd fp_line: +0 on board/-4 in library; F.CrtYd fp_rect: +2 on board/-0 in library); model added on board: ${KIPRJMOD}/Components.pretty/S2 Mini Board_no_hdr.step; non-stock 3D model ${KIPRJMOD}/Components.pretty/S2 Mini Board_no_hdr.step"
+    },
+    {
+      "libId": "Components:WeMos_S2_mini",
+      "libName": null,
+      "footprintId": "Components:ESP32-S2-Mini",
+      "symbol": true,
+      "symbolLocal": false,
+      "footprint": true,
+      "footprintLocal": true,
+      "model": true,
+      "instances": [
+        {
+          "source": "main",
+          "project": "electronics/airbox",
+          "reference": "U1"
+        }
+      ],
+      "evidence": "symbol library Components is in sym-lib-table (project); footprint from project library Components; footprint differs from library: graphics differ (F.CrtYd fp_line: +0 on board/-4 in library; F.CrtYd fp_rect: +2 on board/-0 in library); model added on board: ${KIPRJMOD}/Components.pretty/S2 Mini Board_no_hdr.step; non-stock 3D model ${KIPRJMOD}/Components.pretty/S2 Mini Board_no_hdr.step"
+    },
+    {
+      "libId": "Connector:Conn_Coaxial",
+      "libName": null,
+      "footprintId": "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": true,
+      "model": false,
+      "instances": [
+        {
+          "source": "v3-ltem",
+          "project": "electronics/airbox",
+          "reference": "J11"
+        }
+      ],
+      "evidence": "also differs from KiCad 9.0.9 stock footprint (not plain version drift); footprint differs from library: pad 1: shape roundrect->rect; roundrect_rratio 0.25->none"
+    },
+    {
+      "libId": "Connector_Generic:Conn_01x02",
+      "libName": null,
+      "footprintId": "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": true,
+      "model": false,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "J3"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "J4"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "J3"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "J4"
+        }
+      ],
+      "evidence": "also differs from KiCad 9.0.9 stock footprint (not plain version drift); footprint differs from library: graphics moved to another layer (22x F.SilkS->User.1)"
+    },
+    {
+      "libId": "Connector_Generic:Conn_01x03",
+      "libName": null,
+      "footprintId": "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": true,
+      "model": false,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "J7"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "J7"
+        }
+      ],
+      "evidence": "also differs from KiCad 9.0.9 stock footprint (not plain version drift); footprint differs from library: graphics moved to another layer (26x F.SilkS->User.1)"
+    },
+    {
+      "libId": "Connector_Generic:Conn_01x05",
+      "libName": null,
+      "footprintId": "Connector_JST:JST_PH_B5B-PH-K_1x05_P2.00mm_Vertical",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": true,
+      "model": false,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "J5"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "J5"
+        }
+      ],
+      "evidence": "also differs from KiCad 9.0.9 stock footprint (not plain version drift); footprint differs from library: graphics moved to another layer (34x F.SilkS->User.1)"
+    },
+    {
+      "libId": "Connector_Generic:Conn_01x06",
+      "libName": null,
+      "footprintId": "Connector_JST:JST_PH_B6B-PH-K_1x06_P2.00mm_Vertical",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": true,
+      "model": false,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "J1"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "J1"
+        }
+      ],
+      "evidence": "also differs from KiCad 9.0.9 stock footprint (not plain version drift); footprint differs from library: graphics moved to another layer (38x F.SilkS->User.1)"
+    },
+    {
+      "libId": "Connector_Generic:Conn_02x05_Top_Bottom",
+      "libName": null,
+      "footprintId": "Connector_Hirose:Hirose_DF12_DF12E3.0-10DP-0.5V_2x05_P0.50mm_Vertical",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": true,
+      "model": true,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "J9"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "J9"
+        }
+      ],
+      "evidence": "also differs from KiCad 9.0.9 stock footprint (not plain version drift); footprint differs from library: graphics moved to another layer (7x F.SilkS->User.1); model Hirose_DF12_DF12E3.0-10DP-0.5V_2x05_P0.50mm_Vertical.step offset (0.0, 0.0, 0.0)->(-2.34, -1.9, 0.0); model added on board: ${KIPRJMOD}/Components.pretty/DF12NB(3.0)-10DP-0.5V(51).step; non-stock 3D model ${KIPRJMOD}/Components.pretty/DF12NB(3.0)-10DP-0.5V(51).step"
+    },
+    {
+      "libId": "Connector_Generic:Conn_02x05_Top_Bottom",
+      "libName": null,
+      "footprintId": "Connector_Hirose:Hirose_DF12_DF12E3.0-10DP-0.5V_2x05_P0.50mm_Vertical",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": true,
+      "model": true,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "J10"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "J10"
+        }
+      ],
+      "evidence": "also differs from KiCad 9.0.9 stock footprint (not plain version drift); footprint differs from library: graphics moved to another layer (7x F.SilkS->User.1); model added on board: ${KIPRJMOD}/Components.pretty/DF12NB(3.0)-10DP-0.5V(51).step; non-stock 3D model ${KIPRJMOD}/Components.pretty/DF12NB(3.0)-10DP-0.5V(51).step"
+    },
+    {
+      "libId": "Connector_Generic:Conn_02x05_Top_Bottom",
+      "libName": null,
+      "footprintId": "Connector_Hirose:Hirose_DF12_DF12E3.0-10DP-0.5V_2x05_P0.50mm_Vertical",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": false,
+      "model": true,
+      "instances": [
+        {
+          "source": "main",
+          "project": "electronics/airbox",
+          "reference": "J9"
+        }
+      ],
+      "evidence": "model Hirose_DF12_DF12E3.0-10DP-0.5V_2x05_P0.50mm_Vertical.step offset (0.0, 0.0, 0.0)->(-2.34, -1.9, 0.0); model added on board: ${KIPRJMOD}/Components.pretty/DF12NB(3.0)-10DP-0.5V(51).step; non-stock 3D model ${KIPRJMOD}/Components.pretty/DF12NB(3.0)-10DP-0.5V(51).step"
+    },
+    {
+      "libId": "Connector_Generic:Conn_02x05_Top_Bottom",
+      "libName": null,
+      "footprintId": "Connector_Hirose:Hirose_DF12_DF12E3.0-10DP-0.5V_2x05_P0.50mm_Vertical",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": false,
+      "model": true,
+      "instances": [
+        {
+          "source": "main",
+          "project": "electronics/airbox",
+          "reference": "J10"
+        }
+      ],
+      "evidence": "model added on board: ${KIPRJMOD}/Components.pretty/DF12NB(3.0)-10DP-0.5V(51).step; non-stock 3D model ${KIPRJMOD}/Components.pretty/DF12NB(3.0)-10DP-0.5V(51).step"
+    },
+    {
+      "libId": "Connector_Generic:Conn_02x05_Top_Bottom",
+      "libName": null,
+      "footprintId": "Connector_Hirose:Hirose_DF12_DF12E3.0-10DP-0.5V_2x05_P0.50mm_Vertical",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": false,
+      "model": true,
+      "instances": [
+        {
+          "source": "main",
+          "project": "electronics/airbox",
+          "reference": "J11"
+        },
+        {
+          "source": "main",
+          "project": "electronics/airbox",
+          "reference": "J12"
+        }
+      ],
+      "evidence": "model added on board: ${KIPRJMOD}/Components.pretty/DF12NB(3.0)-10DS-0.5V(51).step; non-stock 3D model ${KIPRJMOD}/Components.pretty/DF12NB(3.0)-10DS-0.5V(51).step"
+    },
+    {
+      "libId": "Device:C",
+      "libName": null,
+      "footprintId": "Capacitor_SMD:C_1812_4532Metric",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": true,
+      "model": false,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "C3"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "C4"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "C5"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "C6"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "C7"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "C8"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "C9"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "C10"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "C3"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "C4"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "C5"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "C6"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "C7"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "C8"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "C9"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "C10"
+        }
+      ],
+      "evidence": "also differs from KiCad 9.0.9 stock footprint (not plain version drift); footprint differs from library: graphics moved to another layer (2x F.SilkS->User.1)"
+    },
+    {
+      "libId": "Device:D_Schottky",
+      "libName": null,
+      "footprintId": "Diode_SMD:D_SMB_Handsoldering",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": true,
+      "model": false,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "D1"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "D2"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "D1"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "D2"
+        }
+      ],
+      "evidence": "also differs from KiCad 9.0.9 stock footprint (not plain version drift); footprint differs from library: graphics moved to another layer (3x F.SilkS->User.1)"
+    },
+    {
+      "libId": "Device:L",
+      "libName": null,
+      "footprintId": "Inductor_SMD:L_APV_APH0412",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": true,
+      "model": false,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "L1"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "L1"
+        }
+      ],
+      "evidence": "also differs from KiCad 9.0.9 stock footprint (not plain version drift); footprint differs from library: graphics moved to another layer (6x F.SilkS->User.1)"
+    },
+    {
+      "libId": "Device:LED",
+      "libName": null,
+      "footprintId": "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": true,
+      "model": true,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "D3"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "D3"
+        }
+      ],
+      "evidence": "also differs from KiCad 9.0.9 stock footprint (not plain version drift); footprint differs from library: graphics moved to another layer (2x F.SilkS->User.1); model added on board: ${KIPRJMOD}/Components.pretty/LED_PLCC4_SMD.step; model in library but not on board: ${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1210_3225Metric.step; non-stock 3D model ${KIPRJMOD}/Components.pretty/LED_PLCC4_SMD.step"
+    },
+    {
+      "libId": "Device:LED",
+      "libName": null,
+      "footprintId": "Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": false,
+      "model": true,
+      "instances": [
+        {
+          "source": "main",
+          "project": "electronics/airbox",
+          "reference": "D3"
+        }
+      ],
+      "evidence": "model added on board: ${KIPRJMOD}/Components.pretty/LED_PLCC4_SMD.step; model in library but not on board: ${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1210_3225Metric.step; non-stock 3D model ${KIPRJMOD}/Components.pretty/LED_PLCC4_SMD.step"
+    },
+    {
+      "libId": "Device:R",
+      "libName": null,
+      "footprintId": "Resistor_SMD:R_2010_5025Metric_Pad1.40x2.65mm_HandSolder",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": true,
+      "model": false,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R5"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R6"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R7"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R8"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R9"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R10"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R11"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R12"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R13"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R14"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R15"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R16"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R17"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R18"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R19"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R20"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "R21"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R5"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R6"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R7"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R8"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R9"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R10"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R11"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R12"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R13"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R14"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R15"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R16"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R17"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R18"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R19"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R20"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "R21"
+        }
+      ],
+      "evidence": "also differs from KiCad 9.0.9 stock footprint (not plain version drift); footprint differs from library: graphics moved to another layer (2x F.SilkS->User.1)"
+    },
+    {
+      "libId": "Display_Character:HDSM-443B",
+      "libName": null,
+      "footprintId": "Display:HDSM-441B_HDSM-443B",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": true,
+      "model": true,
+      "instances": [
+        {
+          "source": "main",
+          "project": "electronics/airbox",
+          "reference": "U4"
+        }
+      ],
+      "evidence": "also differs from KiCad 9.0.9 stock footprint (not plain version drift); footprint differs from library: pad 1: at (-7.5, -5.08)->(-6.985, -5.08); size 2.0 3.0->2.0 2.0; pad 10: at (7.5, -5.08)->(2.413, -5.08); size 2.0 3.0->2.0 2.0; pad 2: at (-7.5, -2.54)->(-6.985, -2.54); size 2.0 3.0->2.0 2.0; pad 3: at (-7.5, 0.0)->(-6.985, 0.0); size 2.0 3.0->2.0 2.0; pad 4: at (-7.5, 2.54)->(-6.985, 2.54); size 2.0 3.0->2.0 2.0; pad 5: at (-7.5, 5.08)->(-6.985, 5.08); size 2.0 3.0->2.0 2.0; pad ...; model HDSM-441B_HDSM-443B.step offset (0.0, 0.0, 0.0)->(-2.25, 0.0, 0.0); model HDSM-441B_HDSM-443B.step scale (1.0, 1.0, 1.0)->(0.8, 0.61, 1.0); model HDSM-441B_HDSM-443B.step rotate (0.0, 0.0, 0.0)->(0.0, 0.0, -180.0); model added on board: ${KIPRJMOD}/Components.pretty/GS2022A.step; non-stock 3D model ${KIPRJMOD}/Components.pretty/GS2022A.step"
+    },
+    {
+      "libId": "Jumper:SolderJumper_2_Open",
+      "libName": null,
+      "footprintId": "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": true,
+      "model": false,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "JP1"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "JP2"
+        },
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "JP3"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "JP1"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "JP2"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "JP3"
+        }
+      ],
+      "evidence": "also differs from KiCad 9.0.9 stock footprint (not plain version drift); footprint differs from library: graphics differ (F.SilkS fp_line: +0 on board/-4 in library)"
+    },
+    {
+      "libId": "MCU_Nordic:nRF9151-LAxx",
+      "libName": null,
+      "footprintId": "Components:XCVR_NRF9151-LACA-R7",
+      "symbol": false,
+      "symbolLocal": true,
+      "footprint": true,
+      "footprintLocal": false,
+      "model": true,
+      "instances": [
+        {
+          "source": "v3-ltem",
+          "project": "electronics/airbox",
+          "reference": "U1"
+        }
+      ],
+      "evidence": "embedded copy differs from library: pin 19 (unit 1): at (-25.4, -25.4, 0.0)->(-25.4, -16.51, 0.0) (library->schematic); symbol absent from KiCad 9.0.9 stock, library drift cannot be ruled out; footprint from project library Components; non-stock 3D model ${KIPRJMOD}/Components.pretty/NRF9151-LACA-R.stp"
+    },
+    {
+      "libId": "Power_Protection:TPD3F303DPV",
+      "libName": null,
+      "footprintId": "Components:Texas_R-PUSON-N8_USON-8-1EP_1.6x2.1mm_P0.5mm_EP0.4x1.7mm",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": true,
+      "footprintLocal": false,
+      "model": true,
+      "instances": [
+        {
+          "source": "v3-ltem",
+          "project": "electronics/airbox",
+          "reference": "U4"
+        }
+      ],
+      "evidence": "footprint from project library Components; non-stock 3D model ${KIPRJMOD}/Components.pretty/DPV0008A.stp"
+    },
+    {
+      "libId": "Transistor_FET:AO3401A",
+      "libName": null,
+      "footprintId": "Package_TO_SOT_SMD:SOT-23",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": true,
+      "model": false,
+      "instances": [
+        {
+          "source": "main",
+          "project": "badge/airbox",
+          "reference": "Q1"
+        },
+        {
+          "source": "v3-ltem",
+          "project": "badge/airbox",
+          "reference": "Q1"
+        }
+      ],
+      "evidence": "also differs from KiCad 9.0.9 stock footprint (not plain version drift); footprint differs from library: graphics moved to another layer (8x F.SilkS->User.1)"
+    },
+    {
+      "libId": null,
+      "libName": null,
+      "footprintId": "Components:P822601_TUNED",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": true,
+      "footprintLocal": false,
+      "model": true,
+      "instances": [
+        {
+          "source": "v3-ltem",
+          "project": "feed_pi",
+          "reference": "ANT1"
+        }
+      ],
+      "evidence": "footprint lib Components not in fp-lib-table and not stock (library Components not found); [lib footprint unavailable: library Components not found]; non-stock 3D model ${KIPRJMOD}/libraries/3dmodels/P822601.stp; [model file not found: ${KIPRJMOD}/libraries/3dmodels/P822601.stp]"
+    }
+  ]
+}

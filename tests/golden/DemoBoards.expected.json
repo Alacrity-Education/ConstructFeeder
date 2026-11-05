@@ -1,0 +1,63 @@
+{
+  "repository": "DemoBoards",
+  "sources": [
+    "worktree"
+  ],
+  "projects": [
+    {
+      "pro": "LED lamp for gardening/LED lamp for gardening.kicad_pro",
+      "status": "ok",
+      "clean": false,
+      "source": "worktree"
+    },
+    {
+      "pro": "SolderingSkillbuilder/SolderingSkillbuilder.kicad_pro",
+      "status": "ok",
+      "clean": true,
+      "source": "worktree"
+    }
+  ],
+  "components": [
+    {
+      "libId": "New_Library:PIR_Sensor",
+      "libName": "PIR_Sensor_1",
+      "footprintId": "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical",
+      "symbol": true,
+      "symbolLocal": false,
+      "footprint": false,
+      "footprintLocal": false,
+      "model": false,
+      "instances": [
+        {
+          "source": "worktree",
+          "project": "LED lamp for gardening",
+          "reference": "PIR1"
+        }
+      ],
+      "evidence": "symbol library New_Library is not in sym-lib-table and not stock (library New_Library not found); [symbol library comparison unavailable: library New_Library not found]; board copy equals KiCad 9.0.9 stock footprint (library drift, not a deliberate edit); footprint differs from library: graphics differ (F.CrtYd fp_line: +4 on board/-4 in library); [decision 2026-11-05] footprint equals KiCad 9.0.9 stock -> library drift, not flagged"
+    },
+    {
+      "libId": "Switch:SW_SPDT",
+      "libName": null,
+      "footprintId": "Library:SWITCH_BASCULANT",
+      "symbol": false,
+      "symbolLocal": false,
+      "footprint": true,
+      "footprintLocal": false,
+      "model": true,
+      "instances": [
+        {
+          "source": "worktree",
+          "project": "LED lamp for gardening",
+          "reference": "SW1"
+        },
+        {
+          "source": "worktree",
+          "project": "LED lamp for gardening",
+          "reference": "SW2"
+        }
+      ],
+      "evidence": "footprint lib Library not in fp-lib-table and not stock (library Library not found); [lib footprint unavailable: library Library not found]; non-stock 3D model ${KIPRJMOD}/100SP1T1B1M1QEH.step"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+# Copy to .github/workflows/construct-feeder.yml in your KiCad hardware repo.
+name: ConstructFeeder
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  construct-feeder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history + all branches; required for all-branches / refs
+
+      - name: Collect custom components
+        id: feeder
+        uses: Alacrity-Education/ConstructFeeder@main
+        with:
+          root: .
+          all-branches: "true"
+          worktree: "true"
+          fail-on-custom: "false"
+
+      - run: echo "Custom components found = ${{ steps.feeder.outputs.custom-count }}"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: construct-feeder
+          path: ${{ steps.feeder.outputs.zip }}

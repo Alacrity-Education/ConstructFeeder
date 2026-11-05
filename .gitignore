@@ -1,0 +1,11 @@
+/target
+*.zip
+/.claude/
+# Data about private repositories and local machine paths: kept locally only.
+/private/
+/tests/compare_realdata.rs
+/tests/e2e_realdata.rs
+/tests/extract_realdata.rs
+/tests/libs_realdata.rs
+/tests/models_realdata.rs
+/tests/vfs_realdata.rs

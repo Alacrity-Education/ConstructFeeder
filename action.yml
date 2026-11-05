@@ -1,0 +1,90 @@
+name: ConstructFeeder
+description: >-
+  Scan a KiCad 9/10 repository for custom components (project-level or edited
+  symbols, footprints and 3D models) and export them as a zip.
+author: Alacrity
+branding:
+  icon: package
+  color: blue
+
+inputs:
+  root:
+    description: Repo root to scan.
+    required: false
+    default: "."
+  out:
+    description: "Output zip path. Defaults to <repo-dir-name>-construct-feeder.zip (relative to the workspace)."
+    required: false
+    default: ""
+  refs:
+    description: Comma-separated git refs to scan (read-only) instead of the working tree.
+    required: false
+    default: ""
+  all-branches:
+    description: Scan all local and remote-only branches ("true"/"false"). Needs fetch-depth 0 on checkout.
+    required: false
+    default: "false"
+  worktree:
+    description: Also scan the working tree when `refs` / `all-branches` is used ("true"/"false").
+    required: false
+    default: "false"
+  exclude:
+    description: Extra exclude globs, whitespace- or newline-separated.
+    required: false
+    default: ""
+  stock-dir:
+    description: >-
+      Stock library dirs as `VER=PATH`, whitespace- or newline-separated.
+      Default: the libraries bundled in the image (/opt/kicad/9, /opt/kicad/10).
+    required: false
+    default: ""
+  fail-on-custom:
+    description: Fail the step (exit 1) if any custom component is found ("true"/"false").
+    required: false
+    default: "false"
+  quiet:
+    description: Do not print per-component JSON to stdout ("true"/"false").
+    required: false
+    default: "false"
+
+outputs:
+  zip:
+    description: Path of the generated zip.
+  custom-count:
+    description: Number of custom components found.
+
+runs:
+  using: docker
+  # Builds the Dockerfile from the action checkout on every run (slow: compiles
+  # the binary and clones the stock libraries). For speed, publish the image
+  # (see .github/workflows/release.yml) and use instead:
+  #   image: docker://ghcr.io/<owner>/construct-feeder:<tag>
+  image: Dockerfile
+  # Docker actions cannot pass flags conditionally, so a tiny shell wrapper
+  # turns the inputs into CLI flags (only non-empty / "true" ones).
+  entrypoint: sh
+  args:
+    - -c
+    - |
+      set -f
+      root=$1 out=$2 refs=$3 allb=$4 wt=$5 excl=$6 stock=$7 foc=$8 quiet=$9
+      set -- --root "$root"
+      [ -n "$out" ] && set -- "$@" --out "$out"
+      [ -n "$refs" ] && set -- "$@" --refs "$refs"
+      [ "$allb" = "true" ] && set -- "$@" --all-branches
+      [ "$wt" = "true" ] && set -- "$@" --worktree
+      for g in $excl; do set -- "$@" --exclude "$g"; done
+      for s in $stock; do set -- "$@" --stock-dir "$s"; done
+      [ "$foc" = "true" ] && set -- "$@" --fail-on-custom
+      [ "$quiet" = "true" ] && set -- "$@" --quiet
+      exec construct-feeder "$@"
+    - construct-feeder-action
+    - ${{ inputs.root }}
+    - ${{ inputs.out }}
+    - ${{ inputs.refs }}
+    - ${{ inputs.all-branches }}
+    - ${{ inputs.worktree }}
+    - ${{ inputs.exclude }}
+    - ${{ inputs.stock-dir }}
+    - ${{ inputs.fail-on-custom }}
+    - ${{ inputs.quiet }}
