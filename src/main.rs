@@ -164,7 +164,19 @@ fn run(cli: Cli) -> Result<i32> {
             });
         }
         if cli.worktree {
-            sources.push(Box::new(FsVfs::new(&root)?));
+            let wt = FsVfs::new(&root)?;
+            // A clean checkout of a commit that is already scanned as a ref adds nothing.
+            let duplicate = wt.dirty() == Some(false)
+                && wt
+                    .commit()
+                    .is_some_and(|c| sources.iter().any(|s| s.commit() == Some(c)));
+            if duplicate {
+                eprintln!(
+                    "construct-feeder: working tree is clean and equals a scanned ref; not scanning it twice"
+                );
+            } else {
+                sources.push(Box::new(wt));
+            }
         }
     } else {
         sources.push(Box::new(FsVfs::new(&root)?));

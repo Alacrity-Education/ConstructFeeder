@@ -217,6 +217,37 @@ fn what(c: &Component, md: &mut String) {
 
 /// The "where" part: one table row per instance.
 fn where_(c: &Component, md: &mut String) {
+    // Collapse instances that only differ by branch into one row listing the branches.
+    let mut rows: Vec<(&InstanceRef, Vec<&str>)> = Vec::new();
+    for i in &c.instances {
+        let same = |a: &InstanceRef| {
+            (
+                &a.project_path,
+                &a.reference,
+                &a.value,
+                &a.sheet,
+                &a.sheet_file,
+                &a.layer,
+                a.dnp,
+            ) == (
+                &i.project_path,
+                &i.reference,
+                &i.value,
+                &i.sheet,
+                &i.sheet_file,
+                &i.layer,
+                i.dnp,
+            )
+        };
+        match rows.iter_mut().find(|(r, _)| same(r)) {
+            Some((_, srcs)) => {
+                if !srcs.contains(&i.source.as_str()) {
+                    srcs.push(&i.source);
+                }
+            }
+            None => rows.push((i, vec![i.source.as_str()])),
+        }
+    }
     let multi_source = c
         .instances
         .iter()
@@ -231,19 +262,25 @@ fn where_(c: &Component, md: &mut String) {
         "|{}---|---|---|---|---|",
         if multi_source { "---|" } else { "" }
     );
-    for i in c.instances.iter().take(MAX_INSTANCE_ROWS) {
-        let _ = writeln!(md, "{}", instance_row(i, multi_source));
+    for (i, srcs) in rows.iter().take(MAX_INSTANCE_ROWS) {
+        let branch = if multi_source {
+            let list: Vec<String> = srcs.iter().map(|s| code(&cell(s))).collect();
+            format!("{} | ", list.join(", "))
+        } else {
+            String::new()
+        };
+        let _ = writeln!(md, "{}", instance_row(i, &branch));
     }
-    if c.instances.len() > MAX_INSTANCE_ROWS {
+    if rows.len() > MAX_INSTANCE_ROWS {
         let _ = writeln!(
             md,
             "\n_…and {} more instance(s); see report.json._",
-            c.instances.len() - MAX_INSTANCE_ROWS
+            rows.len() - MAX_INSTANCE_ROWS
         );
     }
 }
 
-fn instance_row(i: &InstanceRef, multi_source: bool) -> String {
+fn instance_row(i: &InstanceRef, branch: &str) -> String {
     let sch = match (&i.sheet, &i.sheet_file) {
         (Some(s), Some(f)) => format!("{} ({})", cell(s), code(&cell(f))),
         (None, Some(f)) => code(&cell(f)),
@@ -258,12 +295,7 @@ fn instance_row(i: &InstanceRef, multi_source: bool) -> String {
     };
     let dnp = if i.dnp { " (DNP)" } else { "" };
     format!(
-        "| {}{} | **{}**{dnp} | {} | {sch} | {side} |",
-        if multi_source {
-            format!("{} | ", code(&cell(&i.source)))
-        } else {
-            String::new()
-        },
+        "| {branch}{} | **{}**{dnp} | {} | {sch} | {side} |",
         code(&cell(&i.project_path)),
         cell(&i.reference),
         cell(&i.value),
