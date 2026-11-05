@@ -112,10 +112,21 @@ fn run(cli: Cli) -> Result<i32> {
         .root
         .canonicalize()
         .with_context(|| format!("--root {}", cli.root.display()))?;
-    let repo_name = root
-        .file_name()
-        .map(|s| s.to_string_lossy().into_owned())
-        .unwrap_or_else(|| "repo".into());
+    // In GitHub Actions the checkout lives at $GITHUB_WORKSPACE (e.g. /github/workspace inside
+    // the container), so name the repo after $GITHUB_REPOSITORY instead of the directory.
+    let gh_repo = std::env::var("GITHUB_REPOSITORY").ok().filter(|_| {
+        std::env::var("GITHUB_WORKSPACE")
+            .ok()
+            .and_then(|w| Path::new(&w).canonicalize().ok())
+            .is_some_and(|w| w == root)
+    });
+    let repo_name = match gh_repo.as_deref().and_then(|r| r.rsplit('/').next()) {
+        Some(n) if !n.is_empty() => n.to_string(),
+        _ => root
+            .file_name()
+            .map(|s| s.to_string_lossy().into_owned())
+            .unwrap_or_else(|| "repo".into()),
+    };
     let stock = stock_dirs(&cli)?;
     let github = cli.github || std::env::var("GITHUB_ACTIONS").is_ok_and(|v| v == "true");
 
