@@ -2,10 +2,10 @@ name: Release
 
 on:
   push:
-    tags: ["v*"]
+    tags: ["v*.*.*"]
 
 env:
-  IMAGE: ghcr.io/${{ github.repository_owner }}/construct-feeder
+  IMAGE: ghcr.io/alacrity-education/construct-feeder
 
 jobs:
   image:

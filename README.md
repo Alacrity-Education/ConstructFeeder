@@ -91,7 +91,7 @@ steps:
     with:
       fetch-depth: 0          # needed for all-branches / refs
   - id: feeder
-    uses: Alacrity-Education/ConstructFeeder@main
+    uses: Alacrity-Education/ConstructFeeder@v1
     with:
       all-branches: "true"
       worktree: "true"
@@ -108,11 +108,15 @@ Inputs (all optional): `root` (`.`), `out`, `refs`, `all-branches`, `worktree`, 
 `fail-on-custom`, `quiet`. Boolean inputs take `"true"`/`"false"`.
 Outputs: `zip` (path of the zip), `custom-count`.
 
-By default `action.yml` uses `image: Dockerfile`, so the image is built on every run, which is
-slow. For speed, point it at the image published by the release workflow by changing the
-`image:` line to `docker://ghcr.io/<owner>/construct-feeder:<tag>`.
+The action runs the prebuilt image `ghcr.io/alacrity-education/construct-feeder` (KiCad 9 and 10
+stock libraries baked in), so a run only pulls the image: nothing is compiled and no libraries are
+downloaded from the KiCad mirrors.
 
 ## Releases
 
-Pushing a tag `v*` builds and pushes `ghcr.io/<owner>/construct-feeder` and attaches a static
-`x86_64-unknown-linux-musl` binary to the GitHub release.
+1. Set the image tag in `action.yml` to the new version (e.g. `1.1.0`) and commit.
+2. Push the tag `v1.1.0`. The release workflow builds and pushes
+   `ghcr.io/alacrity-education/construct-feeder:{1.1.0,1.1,1,latest}` and attaches a static
+   `x86_64-unknown-linux-musl` binary to the GitHub release.
+3. After the release workflow is green, move the major tag: `git tag -f v1 v1.1.0 && git push -f origin v1`.
+

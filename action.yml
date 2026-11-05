@@ -55,11 +55,10 @@ outputs:
 
 runs:
   using: docker
-  # Builds the Dockerfile from the action checkout on every run (slow: compiles
-  # the binary and clones the stock libraries). For speed, publish the image
-  # (see .github/workflows/release.yml) and use instead:
-  #   image: docker://ghcr.io/<owner>/construct-feeder:<tag>
-  image: Dockerfile
+  # Prebuilt image published by .github/workflows/release.yml (KiCad 9 + 10 stock libraries
+  # baked in), so runs don't compile anything or download libraries. Bumped on every release.
+  # To test unreleased changes, use `image: Dockerfile` instead (builds from source, slow).
+  image: docker://ghcr.io/alacrity-education/construct-feeder:1.0.0
   # Docker actions cannot pass flags conditionally, so a tiny shell wrapper
   # turns the inputs into CLI flags (only non-empty / "true" ones).
   entrypoint: sh
