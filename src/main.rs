@@ -1,11 +1,11 @@
 use anyhow::{Context, Result, bail};
 use clap::Parser;
 use construct_feeder::analysis::{self, Finding, ProjectReport};
-use construct_feeder::ci;
 use construct_feeder::libtable::StockLibs;
 use construct_feeder::report::{self, Report, SourceInfo};
 use construct_feeder::types::KicadVersion;
 use construct_feeder::vfs::{self, FsVfs, GitVfs, PrefixVfs, Vfs};
+use construct_feeder::{ci, markdown};
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
 
@@ -218,6 +218,14 @@ fn run(cli: Cli) -> Result<i32> {
         .out
         .clone()
         .unwrap_or_else(|| PathBuf::from(format!("{repo_name}-construct-feeder.zip")));
+    let zip_label = out
+        .file_name()
+        .map(|n| n.to_string_lossy().into_owned())
+        .unwrap_or_default();
+    files.push((
+        "report.md".into(),
+        markdown::render(&report, &zip_label, None).into_bytes(),
+    ));
     report::write_zip(&out, &report, &files)?;
 
     if !cli.quiet {
@@ -242,7 +250,7 @@ fn run(cli: Cli) -> Result<i32> {
         ci::annotations(&report, &mut stdout)?;
         ci::append_env_file(
             "GITHUB_STEP_SUMMARY",
-            &ci::step_summary(&report, &out.display().to_string()),
+            &markdown::render(&report, &zip_label, Some(markdown::SUMMARY_LIMIT)),
         );
         ci::append_env_file(
             "GITHUB_OUTPUT",

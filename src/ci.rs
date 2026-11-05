@@ -70,57 +70,6 @@ pub fn annotations(report: &Report, out: &mut dyn Write) -> std::io::Result<()> 
     Ok(())
 }
 
-pub fn step_summary(report: &Report, zip_name: &str) -> String {
-    let s = &report.summary;
-    let mut md = String::new();
-    md.push_str("## ConstructFeeder — custom components\n\n");
-    md.push_str(&format!(
-        "Repository **{}** · {} project(s) · **{}** custom component(s), {} instance(s) · report `{}`\n\n",
-        report.repository, s.projects, s.components, s.instances, zip_name
-    ));
-    if s.projects_unsupported + s.projects_error > 0 {
-        md.push_str(&format!(
-            "> ⚠️ {} unsupported and {} failed project(s) — see report.json\n\n",
-            s.projects_unsupported, s.projects_error
-        ));
-    }
-    if report.components.is_empty() {
-        md.push_str("No custom components found.\n");
-        return md;
-    }
-    md.push_str(
-        "| Component | symbol | symbolLocal | footprint | footprintLocal | model | Instances |\n",
-    );
-    md.push_str("|---|:-:|:-:|:-:|:-:|:-:|---|\n");
-    let b = |v: bool| if v { "✔" } else { "" };
-    for c in &report.components {
-        let mut refs: Vec<String> = c
-            .instances
-            .iter()
-            .map(|i| format!("{}:{}", i.project, i.reference))
-            .collect();
-        refs.dedup();
-        let more = if refs.len() > 6 {
-            format!(" +{}", refs.len() - 6)
-        } else {
-            String::new()
-        };
-        refs.truncate(6);
-        md.push_str(&format!(
-            "| `{}` | {} | {} | {} | {} | {} | {}{} |\n",
-            c.folder,
-            b(c.flags.symbol),
-            b(c.flags.symbol_local),
-            b(c.flags.footprint),
-            b(c.flags.footprint_local),
-            b(c.flags.model),
-            refs.join(", "),
-            more
-        ));
-    }
-    md
-}
-
 pub fn append_env_file(var: &str, content: &str) {
     if let Ok(p) = std::env::var(var)
         && let Ok(mut f) = std::fs::OpenOptions::new()

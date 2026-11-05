@@ -5,6 +5,7 @@ pub mod board;
 pub mod ci;
 pub mod compare;
 pub mod libtable;
+pub mod markdown;
 pub mod models;
 pub mod project;
 pub mod report;

@@ -58,12 +58,29 @@ cargo build --release
 
 ```
 <repo>-construct-feeder.zip
-  report.json
+  report.json          full machine-readable findings
+  report.md            human-readable report (same text as the job summary)
   components/<Name>[_<board>]/
     <Name>.kicad_sym
     <Name>.pretty/<footprint>.kicad_mod
     3d/<model>
 ```
+
+## Job summary
+
+In GitHub Actions the tool writes a Markdown report to the run's job summary
+(`$GITHUB_STEP_SUMMARY`). It is generated deterministically from `report.json`, with no AI. For
+every custom component it states:
+
+- **what** is customized: a symbol or footprint from a local/unregistered/unavailable library, a
+  symbol edited on the schematic (e.g. "pins 3, 4 changed (position, orientation)"), a footprint
+  edited on the board (pads and per-layer graphics), and custom 3D models (repository path, where
+  the file is in the zip, and any differences from the library footprint's models);
+- **where** it is used: one row per instance with branch (if several were scanned), project,
+  reference, value, schematic sheet and file, and board side.
+
+GitHub caps job summaries at 1 MiB, so very large reports are truncated there. `report.md` in the
+zip is always complete.
 
 ## Docker usage
 

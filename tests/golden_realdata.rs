@@ -208,3 +208,45 @@ fn golden_reports() {
     eprintln!("checked {n} golden report(s)");
     assert!(n > 0);
 }
+
+/// The job-summary Markdown names every component, what is customized and where.
+#[test]
+fn markdown_summary_demoboards() {
+    let (Ok(data), Some(stock)) = (std::env::var("CF_TESTDATA"), stock()) else {
+        return;
+    };
+    let vfs = FsVfs::new(&PathBuf::from(data).join("DemoBoards")).unwrap();
+    let (projects, findings) = analysis::analyse_source(&vfs, &[], &stock).unwrap();
+    let mut groups = report::group(findings);
+    for g in &mut groups {
+        report::component_files(g);
+    }
+    let components: Vec<_> = groups.into_iter().map(|g| g.component).collect();
+    let rep = report::Report {
+        tool: Default::default(),
+        generated_at: String::new(),
+        repository: "DemoBoards".into(),
+        sources: vec![],
+        stock_libraries: Default::default(),
+        summary: report::summarize(&projects, &components),
+        projects,
+        components,
+        warnings: vec![],
+    };
+    let md = construct_feeder::markdown::render(
+        &rep,
+        "x.zip",
+        Some(construct_feeder::markdown::SUMMARY_LIMIT),
+    );
+    for needle in [
+        "### `PIR_Sensor`",
+        "**Symbol from a local library** — `New_Library:PIR_Sensor`",
+        "not available anywhere",
+        "### `SWITCH_BASCULANT`",
+        "**Custom 3D model**",
+        "**SW1**",
+        "**SW2**",
+    ] {
+        assert!(md.contains(needle), "missing {needle:?} in:\n{md}");
+    }
+}
